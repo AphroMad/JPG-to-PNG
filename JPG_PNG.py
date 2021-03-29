@@ -11,9 +11,19 @@ import glob
 import os 
 from PIL import Image # on importe le module pour avoir les dim de l'image 
 
-chemin = input("veuillez rentrer le chemin de là où il y a les photos :\n ") # on demande à l'utilisateur de rentrer le chemin et le nom de la photo 
+def jpg_to_png():
+    chemin = input("veuillez rentrer le chemin de là où il y a les photos :\n ") # on demande à l'utilisateur de rentrer le chemin et le nom de la photo 
 
-for filename in glob.glob(chemin+"\*.jpg") : # toutes les photos en jpg, on veut les mettre en png 
-    im = Image.open(filename) # on ouvre l'image 
-    im.save(str(filename) +".png") # on l'enregistre au format png 
-    os.remove(str(filename)) # on supprime l'ancienne image 
+    for filename in glob.glob(chemin+"\*.jpg") : # toutes les photos en jpg, on veut les mettre en png 
+        im = Image.open(filename) # on ouvre l'image 
+        im.save(str(filename) +".png") # on l'enregistre au format png 
+        os.remove(str(filename)) # on supprime l'ancienne image 
+
+        
+def png_to_jpg():
+    chemin = input("veuillez rentrer le chemin de là où il y a les photos :\n ") # on demande à l'utilisateur de rentrer le chemin et le nom de la photo 
+
+    for filename in glob.glob(chemin+"\*.png") : # toutes les photos en jpg, on veut les mettre en png 
+        im = Image.open(filename) # on ouvre l'image 
+        im.save(str(filename) +".jpg") # on l'enregistre au format png 
+        os.remove(str(filename)) # on supprime l'ancienne image 
