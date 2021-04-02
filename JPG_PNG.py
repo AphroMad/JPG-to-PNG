@@ -25,5 +25,6 @@ def png_to_jpg():
 
     for filename in glob.glob(chemin+"\*.png") : # toutes les photos en jpg, on veut les mettre en png 
         im = Image.open(filename) # on ouvre l'image 
-        im.save(str(filename) +".jpg") # on l'enregistre au format png 
+        rgb_im = im.convert('RGB') # on passe de RGBA pour le png au RGB pour le jpg, sinon crash
+        rgb_im.save(str(filename) +".jpg") # on l'enregistre au format png 
         os.remove(str(filename)) # on supprime l'ancienne image 
